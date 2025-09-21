@@ -692,7 +692,8 @@ function install_nuclei() {
 function install_gau() {
     # CODE-CHECK-WHITELIST=add-aliases
     colorecho "Installing gau"
-    GO111MODULE=on go install -v github.com/lc/gau@latest
+    go install github.com/lc/gau/v2/cmd/gau@latest
+    asdf reshim golang
     add-history gau
     add-test-command "gau --help"
     add-to-list "gau,https://github.com/lc/gau,Fast tool for fetching URLs"
