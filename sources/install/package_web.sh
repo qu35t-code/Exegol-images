@@ -946,10 +946,11 @@ function install_caido() {
     dpkg -i /opt/tools/caido/"$caido_file_name"
 
     # Move caido from /opt
-    mv /opt/Caido/ /opt/tools/caido/
+    mv /opt/Caido/* /opt/tools/caido/
+    rmdir /opt/Caido/
     rm /usr/bin/caido
     rm /etc/alternatives/caido
-    ln -sf /opt/tools/caido/Caido/caido /opt/tools/bin
+    ln -sf /opt/tools/caido/caido /opt/tools/bin
 
     # CLI
     caido_cli=$(echo "$caido_json" | grep -o '"link":"[^"]*"' | cut -d'"' -f4 | grep "caido-cli-v.*-linux-${arch}\.tar\.gz$")
